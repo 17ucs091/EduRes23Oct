@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class FunctionActivity extends AppCompatActivity {
 
@@ -66,6 +67,7 @@ public class FunctionActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.logout:
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("pushNotifications");
                 mAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(FunctionActivity.this,MainActivity.class));
